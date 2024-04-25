@@ -1,0 +1,26 @@
+{
+  "projectName": "pocket-cash",
+  "projectOwner": "tomek",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "tomek-i",
+      "name": "Tomek Iwainski",
+      "avatar_url": "",
+      "profile": "https://tomek.au/",
+      "contributions": [
+        "owner"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": true,
+  "commitType": "docs"
+}

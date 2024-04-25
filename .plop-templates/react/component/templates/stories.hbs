@@ -1,0 +1,27 @@
+import { Meta, StoryObj } from "@storybook/react";
+import { {{pascalCase name}} } from ".";
+
+const meta: Meta<typeof {{pascalCase name}}> = {
+  component: {{pascalCase name}},
+};
+export default meta;
+
+type Story = StoryObj<typeof {{pascalCase name}}>;
+
+export const Default: Story = {
+  args: {
+    variant: "default",
+    disabled: false,
+  },
+  argTypes: {
+    children: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+};
+
+export const Disabled: Story = {
+  render: () => <{{camelCase name}} disabled>Click</{{camelCase name}}>,
+};
