@@ -56,7 +56,6 @@
     "react-dropzone": "^14.2.3",
     "react-toastify": "^10.0.5",
     "tailwind-merge": "^2.0.0",
-    "tailwind-variants": "^0.2.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {

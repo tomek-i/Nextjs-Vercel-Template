@@ -1,73 +1,62 @@
+import { BadRequest, Conflict, Created, NoContent, NotFound, OK, ServerError, Unauthorized } from "@/util/httpResponses"
+
 export type HttpOptions = {
   headers?: Record<string, string>
   queryParams?: Record<string, string>
 }
 
-const post = async <T extends BodyInit, R>(url: string, data?: T, headers?: Record<string, string>): Promise<R> => {
-  const response = await fetch(url, {
-    method: "POST",
-    body: data,
-    headers,
-  })
-    .then((response) => {
-      return response.json()
-    })
-    //TODO: log error properly
-    .catch((error) => console.error(error))
-  return response
-}
+class HttpClient {
+  private async request<R>(url: string, options: RequestInit & { queryParams?: Record<string, string> }) {
+    if (options.queryParams) {
+      const params = new URLSearchParams(options.queryParams).toString()
+      url += "?" + params
+    }
 
-const httpDelete = async <R>(url: string, headers?: Record<string, string>): Promise<R> => {
-  try {
-    const response = await fetch(url, {
-      method: "DELETE",
-      headers,
-    })
+    const response = await fetch(url, options)
 
     if (!response.ok) {
+      //TODO: add logging
+      console.error(`HTTP error! status: ${response.status}`)
+
+      //TODO: send back normalised error based on status and httpResponses.ts
+      switch (response.status) {
+        case 400:
+          return BadRequest(response.json() as R, response.statusText)
+        case 401:
+          return Unauthorized(response.json() as R, response.statusText)
+        case 404:
+          return NotFound(response.statusText)
+        case 409:
+          return Conflict(response.json() as R, response.statusText)
+        case 500:
+          return ServerError(response.statusText)
+      }
+
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    return response.status === 204 ? null : response.json()
-  } catch (error) {
-    console.error(error)
-    throw error
+    return response.status === 204
+      ? NoContent()
+      : response.status === 201
+      ? Created<R>(response.json() as R)
+      : OK<R>(response.json() as R)
+  }
+
+  async get<R>(url: string, options?: HttpOptions) {
+    return this.request<R>(url, { method: "GET", ...options })
+  }
+
+  async post<T extends BodyInit, R>(url: string, data?: T, options?: HttpOptions) {
+    return this.request<R>(url, { method: "POST", body: data, ...options })
+  }
+
+  async put<T extends BodyInit, R>(url: string, data: T, options?: HttpOptions) {
+    return this.request<R>(url, { method: "PUT", body: data, ...options })
+  }
+
+  async delete<R>(url: string, options?: HttpOptions) {
+    return this.request<R>(url, { method: "DELETE", ...options })
   }
 }
 
-const get = async <R>(url: string, options?: HttpOptions): Promise<{ status: string; data: R }> => {
-  if (options?.queryParams) {
-    const params = new URLSearchParams(options.queryParams).toString()
-    url += "?" + params
-  }
-
-  const response = await fetch(url, {
-    method: "GET",
-    headers: options?.headers,
-  })
-    .then((response) => response.json())
-    .catch((error) => console.error(error))
-
-  return response
-}
-
-const put = async <T extends BodyInit, R>(url: string, data: T, headers?: Record<string, string>): Promise<R> => {
-  const response = await fetch(url, {
-    method: "PUT",
-    body: data,
-    headers,
-  })
-    .then((response) => {
-      return response.status === 204 ? null : response.json()
-    })
-    //TODO: log error properly
-    .catch((error) => console.error(error))
-  return response
-}
-
-export const httpService = {
-  post,
-  get,
-  put,
-  delete: httpDelete,
-}
+export const httpService = new HttpClient()

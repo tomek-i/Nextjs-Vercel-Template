@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import useLocalStorage from "./useLocalStorage"
+import { useLocalStorage } from "./useLocalStorage"
 
 export const useColorMode = () => {
   const [colorMode, setColorMode] = useLocalStorage("color-theme", "light")

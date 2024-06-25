@@ -1,3 +1,4 @@
+//TODO: utelize zod schema
 type LoginRequest = {
   username: string
   password: string
