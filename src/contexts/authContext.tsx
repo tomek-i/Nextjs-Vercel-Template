@@ -1,8 +1,7 @@
 // "use client"
-import { onAuthStateChanged, User } from "firebase/auth"
+import { onAuthStateChanged } from "firebase/auth"
 import React, { createContext, FC, useContext, useEffect, useState } from "react"
 import { firebase } from "@/lib/firebase"
-import { httpService } from "@/services/http.service"
 
 type AuthContextType = {
   // user: User | null

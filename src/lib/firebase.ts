@@ -5,7 +5,7 @@ import { connectAuthEmulator, getAuth } from "firebase/auth"
 // import { connectFirestoreEmulator, getFirestore } from "firebase/firestore"
 // import { Messaging } from "firebase/messaging"
 
-import { env } from "@/env/client.env"
+import { env } from "../../env/client.env"
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional

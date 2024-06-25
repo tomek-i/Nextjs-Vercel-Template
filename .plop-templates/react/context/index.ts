@@ -39,4 +39,4 @@ export const context = {
       templateFile: "./hooks/templates/test.hbs",
     },
   ],
-};
+}

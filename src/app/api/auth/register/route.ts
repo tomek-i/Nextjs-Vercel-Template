@@ -10,7 +10,7 @@ type RegisterRequest = {
 }
 
 export async function POST(request: Request) {
-  const { email, password, confirmPassword, ...rest } = (await request.json()) as RegisterRequest
+  const { email, password, confirmPassword, ..._ } = (await request.json()) as RegisterRequest
 
   if (!email) return BadRequest({ error: "Email is required" })
   if (!password) return BadRequest({ error: "Password are required" })

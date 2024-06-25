@@ -1,7 +1,7 @@
 import withBundleAnalyzer from "@next/bundle-analyzer"
 import withPlugins from "next-compose-plugins"
 import path from "path"
-import { env } from "./env.mjs"
+import { env } from "./env/env.mjs"
 
 /**
  * @type {import('next').NextConfig}
@@ -10,7 +10,7 @@ const config = withPlugins([[withBundleAnalyzer({ enabled: env.ANALYZE })]], {
   reactStrictMode: true,
   experimental: { instrumentationHook: true },
   transpilePackages: ["@"],
-  webpack: (config, options) => {
+  webpack: (config, _) => {
     config.resolve.alias["@"] = path.resolve(process.cwd(), "src")
     return config
   },

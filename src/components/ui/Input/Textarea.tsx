@@ -1,4 +1,4 @@
-import React, {  ReactNode, TextareaHTMLAttributes } from "react"
+import React, { ReactNode, TextareaHTMLAttributes } from "react"
 import { twMerge } from "tailwind-merge"
 import { inputContainerVariants, inputHelperTextVariants, inputLabelVariants, inputVariants } from "./Input.variants"
 import { Label } from "../Label"
@@ -50,7 +50,7 @@ export const Textarea: React.FC<TextareaProps> = ({
       )}
       <div className="relative w-full">
         {startIcon && (
-          <div className="absolute w-5 -translate-x-1/2 -translate-y-1/2 pointer-events-none left-6 top-1/2">
+          <div className="pointer-events-none absolute left-6 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2">
             {startIcon}
           </div>
         )}
@@ -64,7 +64,7 @@ export const Textarea: React.FC<TextareaProps> = ({
           {...props}
         />
 
-        {endIcon && <div className="absolute right-0 w-5 -translate-x-1/2 -translate-y-1/2 top-1/2">{endIcon}</div>}
+        {endIcon && <div className="absolute right-0 top-1/2 w-5 -translate-x-1/2 -translate-y-1/2">{endIcon}</div>}
       </div>
       {helperText && <p className={twMerge(inputHelperTextVariants({ error }))}>{helperText}</p>}
     </div>

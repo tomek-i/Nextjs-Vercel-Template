@@ -17,9 +17,9 @@ export const Tag: React.FC<TagProps> = ({ variant = "primary", className, startI
         className
       )}
     >
-      {startIcon && <div className="inline-flex h-4 w-4 items-center justify-start overflow-hidden">{startIcon}</div>}
+      {startIcon && <div className="inline-flex size-4 items-center justify-start overflow-hidden">{startIcon}</div>}
       <span>{children}</span>
-      {endIcon && <div className="inline-flex h-4 w-4 items-center justify-end overflow-hidden">{endIcon}</div>}
+      {endIcon && <div className="inline-flex size-4 items-center justify-end overflow-hidden">{endIcon}</div>}
     </div>
   )
 }

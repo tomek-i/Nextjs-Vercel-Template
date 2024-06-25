@@ -1,5 +1,7 @@
 <!-- <img align="right" width="360px" height="410px" src="./.github/assets/project-logo-vertical.png"> -->
 
+SOURCE: <https://github.com/Blazity/next-enterprise>
+
 # Project Template
 
 Welcome to _Project Template_, an open-source app. 🌍
@@ -25,11 +27,9 @@ TODO: need to add a few more features: Vercel, firebase, plop, prisma
 - 🔍 **[Observability](https://opentelemetry.io/)** - Open Telemetry integration for seamless monitoring
 - 📂 **[Absolute imports](https://nextjs.org/docs/advanced-features/module-path-aliases)** - No more spaghetti imports
 - ⚕️ **[Health checks](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/)** - Kubernetes-compatible for robust deployments
-<!-- - 🎨 **[Radix UI](https://www.radix-ui.com/)** - Headless UI components for endless customization -->
 - 🎨 **[CVA](http://cva.style/)** - Create a consistent, reusable, and atomic design system
 - 🤖 **[Renovate BOT](https://www.whitesourcesoftware.com/free-developer-tools/renovate)** - Auto-updating dependencies, so you can focus on coding
 - 🩹 **[Patch-package](https://www.npmjs.com/package/patch-package)** - Fix external dependencies without losing your mind
-- 📈 **Components coupling and cohesion graph** - A tool for managing component relationships
 - 🤖 **[Automated ChatGPT Code Reviews](https://openai.com/chatgpt)** - **Stay on the cutting edge with AI-powered code reviews!**
 - 📖 **[Semantic Release](https://github.com/semantic-release/semantic-release)** - for automatic changelog
 - 🌍 **[T3 Env](https://env.t3.gg/)** - Manage your environment variables with ease
@@ -42,7 +42,12 @@ TODO: need to add a few more features: Vercel, firebase, plop, prisma
   - [🎯 Getting Started](#-getting-started)
   - [🚀 Deployment](#-deployment)
   - [📃 Scripts Overview](#-scripts-overview)
-  - [🔗 Coupling Graph](#-coupling-graph)
+    - [Development and Production](#development-and-production)
+    - [Linting and Formatting](#linting-and-formatting)
+    - [Deployment](#deployment)
+    - [Testing](#testing)
+    - [Database Management](#database-management)
+    - [Utilities and Analysis](#utilities-and-analysis)
   - [🧪 Testing](#-testing)
     - [Running Tests](#running-tests)
     - [Acceptance Tests](#acceptance-tests)
@@ -89,51 +94,58 @@ pre-commit install -t commit-msg
 
 ## 🚀 Deployment
 
-Easily deploy your Next.js app with [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=github&utm_campaign=next-enterprise) by clicking the button below:
+Easily deploy your Next.js app with [Vercel](https://vercel.com) by clicking the button below:
 
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/tomek-i/project-template)
+[![Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/tomek-i/nextjs-vercel-template)
 
 ## 📃 Scripts Overview
 
 The following scripts are available in the `package.json`:
 
-- `dev`: Starts the development server with colorized output
-- `build`: Builds the app for production
-- `start`: Starts the production server
-- `lint`: Lints the code using ESLint
-- `lint:fix`: Automatically fixes linting errors
-- `prettier`: Checks the code for proper formatting
-- `prettier:fix`: Automatically fixes formatting issues
-- `analyze`: Analyzes the bundle sizes for Client, Server and Edge environments
-- `storybook`: Starts the Storybook server
-- `build-storybook`: Builds the Storybook for deployment
-- `test`: Runs unit and integration tests
-- `e2e:headless`: Runs end-to-end tests in headless mode
-- `e2e:ui`: Runs end-to-end tests with UI
-- `format`: Formats the code with Prettier
-- `postinstall`: Applies patches to external dependencies
-- `preinstall`: Ensures the project is installed with Yarn
-- `coupling-graph`: **Generates a coupling and cohesion graph for the components**
-- `vercel`: Deploys the app on Vercel
-- `vercel:prod`: Deploys the app on Vercel in production mode
-- `firebase:start`: Starts the Firebase emulators
-- `prisma:push`: Pushes the Prisma schema changes to the database and generates Prisma Client
-- `prisma:generate`: Generates Prisma Client
-- `prisma:migrate`: Runs Prisma migrations on the development database
-- `prisma:studio`: Opens Prisma Studio for database management
-- `plop`: Runs the Plop generator for quick boilerplate code generation
+In the project directory, you can run various scripts:
 
-## 🔗 Coupling Graph
+### Development and Production
 
-The `coupling-graph` script is a useful tool that helps visualize the coupling and connections between your project's internal modules. It's built using the [Madge](https://github.com/pahen/madge) library. To generate the graph, simply run the following command:
+- `yarn dev`: Runs the app in development mode with forced color support in the terminal.
+- `yarn build`: Generates Prisma client and builds the Next.js application for production.
+- `yarn start`: Starts the Next.js application in production mode.
+- `yarn firebase:start`: Starts the Firebase emulator for local development.
 
-```bash
-yarn coupling-graph
-```
+### Linting and Formatting
 
-This will create a `graph.svg` file, which contains a graphical representation of the connections between your components. You can open the file with any SVG-compatible viewer.
+- `yarn lint`: Runs the Next.js linter on the project files.
+- `yarn lint:fix`: Runs the Next.js linter on the project files and fixes fixable issues.
+- `yarn prettier`: Checks the formatting of code files against Prettier configuration.
+- `yarn prettier:fix`: Formats code files according to the Prettier configuration.
+- `yarn format`: Alias for `yarn run prettier:fix`, formats code files.
 
-<!-- ![graph](https://user-images.githubusercontent.com/28964599/233662744-3ba89713-8466-49cd-9be7-e6fb38191f58.png) -->
+### Deployment
+
+- `yarn vercel`: Deploys the project using Vercel.
+- `yarn vercel:dev`: Runs the project in development mode on Vercel.
+- `yarn vercel:prod`: Deploys the project in production mode on Vercel.
+
+### Testing
+
+- `yarn test`: Runs the Jest test runner in the interactive watch mode.
+- `yarn e2e:headless`: Runs end-to-end tests using Playwright in headless mode.
+- `yarn e2e:report`: Displays the Playwright test report.
+- `yarn e2e:ui`: Runs end-to-end tests using Playwright with a UI.
+- `yarn storybook`: Runs Storybook in development mode.
+- `yarn storybook:test`: Runs tests in Storybook.
+- `yarn storybook:build`: Builds the Storybook for production.
+
+### Database Management
+
+- `yarn prisma:push`: Pushes the Prisma schema state to the database and generates Prisma client.
+- `yarn prisma:generate`: Generates the Prisma client.
+- `yarn prisma:migrate`: Runs Prisma migrations in development mode.
+- `yarn prisma:studio`: Opens Prisma Studio for database management.
+
+### Utilities and Analysis
+
+- `yarn analyze`: Analyzes the webpack bundle size during the build process.
+- `yarn plop`: Runs the Plop generator for scaffolding new code files.
 
 ## 🧪 Testing
 

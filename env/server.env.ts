@@ -11,6 +11,10 @@ export const env = createEnv({
     POSTGRES_HOST: z.string(),
     POSTGRES_PASSWORD: z.string(),
     POSTGRES_DATABASE: z.string(),
+    ANALYZE: z
+      .enum(["true", "false"])
+      .optional()
+      .transform((value) => value === "true"),
   },
   runtimeEnv: {
     POSTGRES_URL: process.env.POSTGRES_URL,
@@ -21,5 +25,6 @@ export const env = createEnv({
     POSTGRES_HOST: process.env.POSTGRES_HOST,
     POSTGRES_PASSWORD: process.env.POSTGRES_PASSWORD,
     POSTGRES_DATABASE: process.env.POSTGRES_DATABASE,
+    ANALYZE: process.env.ANALYZE,
   },
 })
