@@ -1,6 +1,5 @@
-<!-- <img align="right" width="360px" height="410px" src="./.github/assets/project-logo-vertical.png"> -->
-
 SOURCE: <https://github.com/Blazity/next-enterprise>
+SOURCE: <https://github.com/tomek-i/vscode-settings-boilerplate/settings>
 
 # Project Template
 
