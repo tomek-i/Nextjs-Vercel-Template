@@ -1,14 +1,72 @@
 {
+  // Automatically attach the debugger for Node.js scripts
+  "debug.javascript.autoAttachFilter": "smart",
+  // Control the cursor animation style
+  "editor.cursorBlinking": "smooth",
+  // Enable smooth caret animation
+  "editor.cursorSmoothCaretAnimation": "on",
+  // Control the cursor style
+  "editor.cursorStyle": "line",
+  // Control the font family
+  "editor.fontFamily": "Fira Code",
+  // Enable font ligatures
+  "editor.fontLigatures": true,
+
+  // Render vertical rulers to keep characters within a certain limit
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#ff990022"
+    },
+    {
+      "column": 100,
+      "color": "#ff000055"
+    }
+  ],
+  // Enable sticky scroll
+  "editor.stickyScroll.enabled": true,
+  // The number of spaces a tab is equal to
+  "editor.tabSize": 2,
+  // Code action kinds to be run on save
+  "editor.codeActionsOnSave": {
+    // Organize imports on save
+    "source.organizeImports": "explicit",
+    // Fix all eslint problems on save
+    "source.fixAll.eslint": "explicit"
+  },
+  // Enable bracket pair colorization
+  "editor.bracketPairColorization.enabled": true,
+  // Show vertical guides for bracket pairs
+  "editor.guides.bracketPairs": "active",
+  // Format the file on save
+  "editor.formatOnSave": true,
+  // Enable linked editing of HTML tags
+  "editor.linkedEditing": true,
+
+  // save files on focus change
+  "files.autoSave": "onFocusChange",
+  // Trim final newlines when saving
+  "files.trimFinalNewlines": true,
+
+  // Configure glob patterns for excluding files and folders
+  "files.exclude": {
+    "**/node_modules": true
+  },
+
+  // Enable experimental class regex for Tailwind CSS
   "tailwindCSS.experimental.classRegex": [
     ["cva(?:<[^>]*>)?(([^)]*))", "[\"'`]([^\"'`]*).*?[\"'`]", "(?:twMerge|twJoin)\\(([^\\);]*)[\\);]"]
   ],
-  // "editor.codeActionsOnSave": {
-  //   "source.organizeImports": "always"
-  // },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "files.exclude": {
-    "**/node_modules": true
-  }
+
+  // highlight modified tabs
+  "workbench.editor.highlightModifiedTabs": true,
+
+  // update imports on file move
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  // add spaces between brackets
+  "prettier.bracketSpacing": false,
+  // closing bracket of a multi-line element is put on the same line
+  "prettier.bracketSameLine": true
 }
