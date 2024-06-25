@@ -3,7 +3,7 @@
 ## TODO
 
 - List more details about the other various features
-- TODO: need to add Vercel, firebase, plop, prisma, sentry, authentication?
+- TODO: need to add Vercel, firebase, plop, prisma, sentry, authentication, devcontainer with postgres
 
 ## CVA - A New Approach to Variants
 
