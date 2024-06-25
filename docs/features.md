@@ -1,5 +1,10 @@
 # ✨ Features
 
+## TODO
+
+- List more details about the other various features
+- TODO: need to add Vercel, firebase, plop, prisma, sentry, authentication?
+
 ## CVA - A New Approach to Variants
 
 While CSS-in-TS libraries such as [Stitches](https://stitches.dev/) and [Vanilla Extract](https://vanilla-extract.style/) are great for building type-safe UI components, they might not be the perfect fit for everyone. You may prefer more control over your stylesheets, need to use a framework like Tailwind CSS, or simply enjoy writing your own CSS.
@@ -11,8 +16,6 @@ Creating variants using traditional CSS can be a tedious task, requiring you to 
 We've integrated the innovative [ChatGPT Code Review](https://github.com/anc95/ChatGPT-CodeReview) for AI-powered, automated code reviews. This feature provides real-time feedback on your code, helping improve code quality and catch potential issues.
 
 To use ChatGPT Code Review, add an `OPENAI_API_KEY` environment variable with an appropriate key from the OpenAI platform. For setup details, refer to the [Using GitHub Actions](https://github.com/anc95/ChatGPT-CodeReview#using-github-actions) section in the documentation.
-
-<!-- ![image](https://user-images.githubusercontent.com/28964599/233685071-e1371edf-6359-41c3-a989-335d6ee09cb7.png) -->
 
 ## 💻 Environment Variables handling
 

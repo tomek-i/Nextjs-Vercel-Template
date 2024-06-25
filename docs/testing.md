@@ -8,6 +8,8 @@ This boilerplate comes with various testing setups to ensure your application's 
 - **End-to-end tests (headless mode)**: Run Playwright tests in headless mode with `yarn e2e:headless`
 - **End-to-end tests (UI mode)**: Run Playwright tests with UI using `yarn e2e:ui`
 
+![image](../.github/assets/e2e-ui.png)
+
 ## Acceptance Tests
 
 To write acceptance tests, we leverage Storybook's [`play` function](https://storybook.js.org/docs/react/writing-stories/play-function#writing-stories-with-the-play-function). This allows you to interact with your components and test various user flows within Storybook.

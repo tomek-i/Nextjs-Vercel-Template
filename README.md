@@ -23,7 +23,7 @@
 - 🤖 **[Automated ChatGPT Code Reviews](https://openai.com/chatgpt)** - **Stay on the cutting edge with AI-powered code reviews!**
 - 📖 **[Semantic Release](https://github.com/semantic-release/semantic-release)** - for automatic changelog
 - 🌍 **[T3 Env](https://env.t3.gg/)** - Manage your environment variables with ease
-- TODO: need to add Vercel, firebase, plop, prisma
+- [✨ More information](./docs/features.md)
 
 ## 📒 Table of Contents
 
@@ -34,7 +34,6 @@
   - [🚀 Deployment](#-deployment)
   - [📃 Scripts](./docs/scripts-overview.md)
   - [🧪 Testing](./docs/testing.md)
-  - [✨ Other Features](./docs/features.md)
   - [📜 License](#-license)
   - [🤝 Contribution](#-contribution)
   - [💡 Acknowledgements and Inspirations](#-acknowledgements-and-inspirations)
