@@ -271,6 +271,16 @@ This project is licensed under the MIT License. For more information, see the [L
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <!-- readme: collaborators,contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/tomek-i">
+            <img src="https://avatars.githubusercontent.com/u/3699937?v=4" width="100;" alt="tomek-i"/>
+            <br />
+            <sub><b>Thomas Iwainski</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: collaborators,contributors -end -->
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
