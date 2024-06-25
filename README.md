@@ -78,14 +78,6 @@ Easily deploy your Next.js app with [Vercel](https://vercel.com) by clicking the
 
 [![Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/tomek-i/nextjs-vercel-template)
 
-## Scripts
-
-For an overview of the available scripts, have a look at the [scripts overview](./docs/scripts-overview.md) file.
-
-## Other Features
-
-For an overview of the available features, have a look at the [features overview](./docs/features.md) file.
-
 ## 📜 License
 
 This project is licensed under the MIT License. For more information, see the [LICENSE](./LICENSE) file.
