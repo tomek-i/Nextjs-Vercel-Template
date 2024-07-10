@@ -1,17 +1,20 @@
-import { type VariantProps } from "class-variance-authority"
-import { clsx } from "clsx"
 import React from "react"
+import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { {{pascalCase name}}Variants } from "./{{pascalCase name}}.variants"
+import { {{lowerCase name}} ,type {{pascalCase name}}Variants } from "./{{pascalCase name}}.variants"
 
-type {{pascalCase name}}Props = { disabled?: boolean } & React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof {{pascalCase name}}Variants>
+export type {{pascalCase name}}Props = { disabled?: boolean } 
+  & React.HTMLAttributes<HTMLDivElement> 
+  & {{pascalCase name}}Variants
 
 export const {{pascalCase name}}: React.FC<{{pascalCase name}}Props> = ({
   className = "",
   size = "default",
   variant = "default",
+  disabled = false,
   ...props
 }) => {
-  return <div className={twMerge(clsx({{pascalCase name}}Variants({ variant, size, className })))} {...props}></div>
+  const style = clsx({{lowerCase name}}({ variant, disabled, size }))
+  
+  return <div  className={twMerge(style, className)} {...props}></div>
 }
