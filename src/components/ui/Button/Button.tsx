@@ -1,61 +1,37 @@
-import { type VariantProps } from "class-variance-authority"
-
+import { clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { button } from "./Button.variants"
+import { button, type ButtonVariants } from "./Button.variants"
 
-type x = VariantProps<typeof button>
-type ButtonVariants = Omit<x, "href">
+// export interface ButtonProps
+//   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+//     Omit<ButtonVariants, "disabled" | "icon"> {
+//   icon?: React.ReactNode
+//   iconPosition?: "left" | "right"
+// }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
-    // VariantProps<typeof button>,
-    ButtonVariants,
-    Partial<Pick<HTMLAnchorElement, "target">> {
-  href?: string
-  disabled?: boolean
-  fullWidth?: boolean
-  iconOnly?: boolean
-  icon?: React.ReactNode
-  size?: "xsmall" | "small" | "medium" | "large"
-  variant?: "primary" | "secondary" | "outlined" | "text" | "text-default"
+export interface ButtonPropsBase
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    Omit<ButtonVariants, "disabled" | "icon"> {}
+
+export interface ButtonPropsWithIcon extends ButtonPropsBase {
+  icon: React.ReactNode
+  iconPosition: "left" | "right"
 }
 
-export function Button({
-  className,
-  href,
-  variant = "primary",
-  size = "medium",
-  iconOnly = false,
-  fullWidth = false,
-  icon,
-  children,
-  startIcon,
-  endIcon,
-  ...props
-}: ButtonProps) {
-  const Component = href && !props.disabled ? "a" : "button"
+export interface ButtonPropsWithoutIcon extends ButtonPropsBase {
+  icon?: never
+  iconPosition?: never
+}
+
+export type ButtonProps = ButtonPropsWithIcon | ButtonPropsWithoutIcon
+
+export function Button({ variant, disabled, children, icon, rounded, className, ...props }: ButtonProps) {
+  const style = clsx(button({ variant, disabled, icon: !!icon, rounded }))
   return (
-    <Component
-      type="button"
-      {...(href ? { href: String(href) } : {})}
-      className={twMerge(
-        button({
-          href: Boolean(href),
-          variant,
-          size,
-          iconOnly,
-          startIcon: Boolean(startIcon),
-          endIcon: Boolean(endIcon),
-          disabled: Boolean(props?.disabled),
-          fullWidth,
-          className,
-        })
-      )}
-      {...props}
-    >
-      {startIcon && icon}
-      <span>{children}</span>
-      {endIcon && icon}
-    </Component>
+    <button className={twMerge(style, className)} disabled={disabled} type={props.type ?? "button"} {...props}>
+      {icon && props.iconPosition === "left" && <span>{icon}</span>}
+      {children ?? "Button"}
+      {icon && props.iconPosition === "right" && <span>{icon}</span>}
+    </button>
   )
 }
