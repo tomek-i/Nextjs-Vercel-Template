@@ -1,0 +1,27 @@
+import { cva, type VariantProps } from "class-variance-authority"
+
+export const checkbox = cva(
+  "",
+  {
+    variants: {
+      variant: {
+        default:
+          "text-white bg-blue-600 border-blue-700  hover:bg-blue-700 focus:ring-blue-500",
+      },
+        disabled: {
+        true: "cursor-not-allowed bg-slate-200 !text-slate-300",
+        false: "",
+      },
+      size: {
+        default: "w-full px-6 py-3",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+      disabled:false
+    },
+  }
+);
+
+export type CheckboxVariants = VariantProps<typeof checkbox>
