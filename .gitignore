@@ -47,3 +47,6 @@ dev.db
 dev.db-journal
 .vercel
 *.log
+
+# Million Lint
+.million

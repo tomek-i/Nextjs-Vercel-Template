@@ -25,13 +25,13 @@ export interface ButtonPropsWithoutIcon extends ButtonPropsBase {
 
 export type ButtonProps = ButtonPropsWithIcon | ButtonPropsWithoutIcon
 
-export function Button({ variant, disabled, children, icon, rounded, className, ...props }: ButtonProps) {
+export function Button({ variant, disabled, children, icon, rounded, className, iconPosition, ...props }: ButtonProps) {
   const style = clsx(button({ variant, disabled, icon: !!icon, rounded }))
   return (
     <button className={twMerge(style, className)} disabled={disabled} type={props.type ?? "button"} {...props}>
-      {icon && props.iconPosition === "left" && <span>{icon}</span>}
-      {children ?? "Button"}
-      {icon && props.iconPosition === "right" && <span>{icon}</span>}
+      {icon && iconPosition === "left" && <span>{icon}</span>}
+      {children ?? "Button Text"}
+      {icon && iconPosition === "right" && <span>{icon}</span>}
     </button>
   )
 }
