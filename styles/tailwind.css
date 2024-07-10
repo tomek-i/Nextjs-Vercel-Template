@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply relative  z-0 bg-white text-base font-normal text-body;
+    @apply relative  z-0 bg-white text-base font-normal text-black;
   }
   h1 {
     @apply mb-4 text-4xl;

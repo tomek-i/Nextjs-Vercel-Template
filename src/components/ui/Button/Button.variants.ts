@@ -1,132 +1,71 @@
-import { cva } from "class-variance-authority"
-import { tv } from "tailwind-variants"
+import { cva, type VariantProps } from "class-variance-authority"
 
-export const button = cva(
-  [
-    "group",
-    "inline-flex",
-    "items-center",
-    "justify-center",
-    "whitespace-nowrap",
-    "rounded",
-    "py-2",
-    "align-middle",
-    "text-sm",
-    "font-semibold",
-    "leading-none",
-    "transition-all",
-    "duration-300",
-    "ease-in-out",
-    "disabled:cursor-not-allowed",
-  ],
-  {
-    variants: {
-      variant: {
-        primary: "bg-blue-700 stroke-white px-6 text-white hover:bg-blue-950",
-        secondary: "bg-blue-50 stroke-blue-700 px-6 text-blue-700 hover:bg-blue-100",
-        outlined: "border border-blue-700 bg-transparent stroke-blue-700 px-6 text-blue-700 hover:bg-blue-50",
-        text: "stroke-blue-700 px-2 text-blue-700",
-        "text-default": "stroke-slate-500 px-2 text-black",
-      },
-      size: {
-        large: "h-10 min-w-10 gap-2",
-        medium: "h-9 min-w-9 gap-2",
-        small: "h-8 min-w-8 gap-1.5 text-xs",
-        xsmall: "h-6 min-w-6 gap-1.5 rounded-md text-xs",
-      },
-      disabled: {
-        true: "",
-        false: "",
-      },
-      href: {
-        true: "cursor-pointer",
-        false: "",
-      },
-      iconOnly: {
-        true: "p-0",
-        false: "",
-      },
-      startIcon: {
-        true: "",
-        false: "",
-      },
-      endIcon: {
-        true: "",
-        false: "",
-      },
-      fullWidth: {
-        true: "w-full",
-        false: "w-min",
-      },
-    },
-    compoundVariants: [
-      {
-        variant: ["primary", "secondary"],
-        class: "disabled:bg-slate-100 disabled:stroke-slate-400 disabled:text-slate-400 disabled:hover:bg-slate-100",
-      },
-      {
-        variant: ["outlined"],
-        class:
-          "disabled:border-slate-100 disabled:bg-white disabled:stroke-slate-400 disabled:text-slate-400 disabled:hover:bg-white",
-      },
-      {
-        variant: ["primary", "secondary", "outlined"],
-        iconOnly: false,
-        startIcon: true,
-        class: "px-4",
-      },
-      {
-        variant: ["primary", "secondary", "outlined"],
-        iconOnly: false,
-        endIcon: true,
-        class: "px-4",
-      },
-      {
-        variant: ["primary", "secondary", "outlined"],
-        iconOnly: false,
-        size: ["small", "xsmall"],
-        class: "px-2",
-      },
-      {
-        variant: ["text", "text-default"],
-        class: "disabled:stroke-slate-400 disabled:text-slate-400",
-      },
-      {
-        variant: ["text"],
-        disabled: false,
-        class: "hover:stroke-blue-950 hover:text-blue-950",
-      },
-      {
-        variant: ["text-default"],
-        disabled: false,
-        class: "hover:opacity-80",
-      },
-    ],
-  }
-)
-
-export const ButtonVariants = tv({
-  base: "justify-center inline-flex items-center rounded-xl text-center border border-blue-400 transition-colors delay-50",
+export const button = cva("px-4 py-2 font-semibold transition duration-200 ease-in-out", {
   variants: {
-    intent: {
+    variant: {
       primary: "bg-blue-500 text-white",
       secondary: "bg-purple-500 text-white",
+      outlined: "border border-blue-500 text-blue-500",
     },
-    size: {
-      sm: "text-sm",
-      md: "text-base",
-      lg: "px-4 py-3 text-lg",
+    disabled: {
+      true: "cursor-not-allowed bg-slate-200 !text-slate-300",
+      false: "",
     },
-    underline: { true: ["underline"], false: [] },
+    icon: {
+      true: "inline-flex items-center justify-center gap-2",
+      false: "",
+    },
+    width: {
+      default: "w-max",
+      full: "w-full",
+      auto: "w-auto",
+      sm: "w-24",
+      md: "w-32",
+      lg: "w-40",
+      xl: "w-48",
+    },
+    rounded: {
+      none: "rounded-none",
+      default: "rounded",
+      sm: "rounded-sm",
+      md: "rounded-md",
+      lg: "rounded-lg",
+      full: "rounded-full",
+    },
   },
   compoundVariants: [
+    // Apply hover styles for primary and secondary variants when not disabled
     {
-      size: ["sm", "md"],
-      class: "px-3 py-1",
+      variant: "primary",
+      disabled: false,
+      class: "hover:bg-blue-600 active:bg-blue-700 focus:ring-2 focus:ring-blue-300",
+    },
+    {
+      variant: "secondary",
+      disabled: false,
+      class: "hover:bg-purple-600  active:bg-purple-700 focus:ring-2 focus:ring-purple-300",
+    },
+    // Apply hover styles for outlined variant when not disabled
+    {
+      variant: "outlined",
+      disabled: false,
+      class:
+        "hover:border-blue-800 hover:text-blue-800 active:text-blue-900 focus:border-blue-900 focus:ring-2 focus:ring-blue-300",
+    },
+    // Adjusted compound variant for outlined + disabled
+    {
+      variant: "outlined",
+      disabled: true,
+      class: " !bg-white !border-slate-300 ",
     },
   ],
   defaultVariants: {
-    intent: "primary",
-    size: "lg",
+    variant: "primary",
+    disabled: false,
+    icon: false,
+    rounded: "default",
+    width: "full",
   },
 })
+
+export type ButtonVariants = VariantProps<typeof button>
