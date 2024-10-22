@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button"
+import { Checkbox } from "@/components/ui/Checkbox"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -44,6 +45,15 @@ export default function Web() {
             </h1>
 
             <div className="flex flex-col space-y-4">
+              <h2>Checkbox</h2>
+              <Checkbox label="Color Test" color="test" />
+              <Checkbox label="Checkbox" color="primary" />
+              <Checkbox label="Checkbox checked" defaultChecked />
+              <Checkbox label="Checkbox disabled" disabled />
+              <Checkbox label="Checkbox checked disabled" defaultChecked disabled />
+            </div>
+            <div className="flex flex-col space-y-4">
+              <h2>Buttons</h2>
               <Button variant="primary" rounded={"sm"} className="font-bold">
                 Primary Button
               </Button>
